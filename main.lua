@@ -12,9 +12,16 @@ function love.load()
 end
 
 function love.draw()
-    love.graphics.draw(ship, shipx, 550)
+
+    love.graphics.draw(ship, shipx, 560)
 end
 
 function love.update(dt)
-	shipx = shipx + 2
+	speed = 2
+	if love.keyboard.isDown ("right") then
+		shipx = shipx + speed
+	end
+	if love.keyboard.isDown ("left") then
+		shipx = shipx - speed
+	end
 end
