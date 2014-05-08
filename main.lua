@@ -9,10 +9,12 @@ end
 function love.load()
 	shipx = 400
 	ship = love.graphics.newImage("ship.png")
+	background = love.graphics.newImage("background.png")
 end
 
 function love.draw()
-
+    
+    love.graphics.draw(background, 0, 0)	
     love.graphics.draw(ship, shipx - 16, 560)
 end
 
