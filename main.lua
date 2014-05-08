@@ -13,7 +13,7 @@ end
 
 function love.draw()
 
-    love.graphics.draw(ship, shipx, 560)
+    love.graphics.draw(ship, shipx - 16, 560)
 end
 
 function love.update(dt)
