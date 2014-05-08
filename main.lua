@@ -15,13 +15,25 @@ function love.load()
 	shipxmax = screenwidth - shipxmin
 	ship = love.graphics.newImage("ship.png")
 	background = love.graphics.newImage("background.png")
+	bulletImage = love.graphics.newImage("bullet.png")
 
+    bullets = {}
+
+	for i = 1, 20 do
+		bullets[i] = {
+			x = 300 + i * 20,
+			y = 400
+		}
+	end
 end
 
 function love.draw()
     
     love.graphics.draw(background, 0, 0)	
     love.graphics.draw(ship, shipx - 16, shipy)
+    for i = 1, #bullets do
+    	love.graphics.draw(bulletImage, bullets[i].x, bullets[i].y)
+    end
 end
 
 function love.update(dt)
@@ -43,5 +55,9 @@ function love.update(dt)
 	
 	if shipx < shipxmin then
 	   	shipx = shipxmin
+	end
+
+	for i = 1, #bullets do
+		bullets[i].y = bullets[i].y - 5	
 	end
 end
