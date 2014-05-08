@@ -7,7 +7,7 @@ end
 
 
 function love.load()
-	speed = 180
+	speed = 320
 	screenwidth = 800
 	shipx = screenwidth / 2
 	shipy = 500
