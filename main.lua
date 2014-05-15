@@ -19,20 +19,20 @@ function love.load()
 
     bullets = {}
 
-	for i = 1, 20 do
-		bullets[i] = {
-			x = 300 + i * 20,
-			y = 400
-		}
-	end
+	-- for i = 1, 20 do
+	-- 	bullets[i] = {
+	-- 		x = 300,
+	-- 		y = 400 + i * 20
+	-- 	}
+	-- end
 end
 
 function love.draw()
     
     love.graphics.draw(background, 0, 0)	
-    love.graphics.draw(ship, shipx - 16, shipy)
+    love.graphics.draw(ship, shipx - 16, shipy - 16)
     for i = 1, #bullets do
-    	love.graphics.draw(bulletImage, bullets[i].x, bullets[i].y)
+    	love.graphics.draw(bulletImage, bullets[i].x - 8, bullets[i].y - 8)
     end
 end
 
@@ -46,7 +46,10 @@ function love.update(dt)
 	end
 	
 	if love.keyboard.isDown(" ") then
-	
+		bullets[#bullets + 1] = {
+            x = shipx, 
+            y = shipy - 20
+	    }
 	end
 	
 	if shipx > shipxmax then
