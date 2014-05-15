@@ -19,6 +19,10 @@ function love.load()
 
     bullets = {}
 
+    counter = 1 
+    fps = 60
+    fire_rate = 10
+
 	-- for i = 1, 20 do
 	-- 	bullets[i] = {
 	-- 		x = 300,
@@ -36,6 +40,13 @@ function love.draw()
     end
 end
 
+function shoot()
+	bullets[#bullets + 1] = {
+        x = shipx, 
+        y = shipy - 20
+    }
+end
+
 function love.update(dt)
 	if love.keyboard.isDown("right") then
 		shipx = shipx + (speed * dt)
@@ -44,12 +55,13 @@ function love.update(dt)
 	if love.keyboard.isDown("left") then
 		shipx = shipx - (speed * dt)
 	end
-	
+
 	if love.keyboard.isDown(" ") then
-		bullets[#bullets + 1] = {
-            x = shipx, 
-            y = shipy - 20
-	    }
+		if counter >= fps / fire_rate then
+			shoot()
+			counter = 0
+		end
+		counter = counter + 1 
 	end
 	
 	if shipx > shipxmax then
